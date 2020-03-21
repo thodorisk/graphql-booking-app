@@ -47,7 +47,7 @@ input UserInput {
 type RootQuery {
     events: [Event!]!
     bookings: [Booking!]!
-    login(emai: String!, password: String!): AuthData
+    login(email: String!, password: String!): AuthData
 }
 
 type RootMutation {

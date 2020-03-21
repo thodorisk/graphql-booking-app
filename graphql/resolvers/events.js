@@ -18,13 +18,16 @@ module.exports = {
           throw err;
         });
     },
-    createEvent: args => {
+    createEvent: (args, req) => {
+        if (!req.isAuth) {
+            throw new Error('Unauthenticated');
+        }
       const event = new Event({
         title: args.eventInput.title,
         description: args.eventInput.description,
         price: +args.eventInput.price,
         date: new Date(args.eventInput.date),
-        creator: "5e46ee25441b1b1def351c7f"
+        creator: req.userId
       });
   
       let createdEvent;
